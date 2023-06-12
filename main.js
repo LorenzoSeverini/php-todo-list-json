@@ -4,25 +4,31 @@ const { createApp } = Vue;
 
 createApp({
     
-    data: {
-        message: 'Hello Vue!',
-        items: [],
-        inputText: ''
+    data () {
+        return {
+            apiUrl: 'api.php',
+            apiData: [],
+        }
     },
     
     mounted() {
-        console.log('Mounted');
+        console.log('Mounted 🗻🤠');
+
+        axios.get(this.apiUrl).then((response) => {
+            console.log("Data are here 🫡: ", response.data);
+        });
     },
     
     methods: {
-        fetchData() {
-          axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(response => {
-              this.items = response.data;
-            })
-            .catch(error => {
-              console.log(error);
+        callApi() {
+            console.log('Call API 📞');
+            axios.get(this.apiUrl).then((response) => {
+                this.apiData = response.data;
+                console.log('Data of array 👍💻: ', this.apiData);
+            }).catch((error) => {
+                console.log("Error: ", error);
             });
-        }
+        },
     },
+
 }).mount("#app");
