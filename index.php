@@ -23,7 +23,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <h1 class="text-center text-white mb-4">List of summer fruits 🍉🍇🍊</h1>
-                    <button class="btn btn-primary mb-3" @click="callApi">Show List </button>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary mb-3" @click="callApi">Show List </button>
+                        <button class="btn btn-danger mb-3" @click="deleteApi">Delete List </button>
+                    </div>
                     <ul class="list-group">
                         <li class="list-group-item bg-dark text-white" v-for="item in apiData" :key="item.name">
                             {{ item.name }} - {{ item.color }} - {{ item.taste }}

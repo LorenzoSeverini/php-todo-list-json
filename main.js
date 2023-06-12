@@ -29,6 +29,18 @@ createApp({
                 console.log("Error: ", error);
             });
         },
+
+        deleteApi() {
+            console.log('Delete API 📞');
+            axios.delete(this.apiUrl).then((response) => {
+                this.apiData = [];
+                console.log('Data of array 👍💻: ', this.apiData);
+            }
+            ).catch((error) => {
+                console.log("Error: ", error);
+            }
+            );
+        },
     },
 
 }).mount("#app");
