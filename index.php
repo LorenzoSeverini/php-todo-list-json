@@ -7,7 +7,7 @@
     <title>To do list Json</title>
 
     <!-- axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- bootstrap -->
@@ -23,14 +23,20 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <h1 class="text-center text-white mb-4">List of summer fruits 🍉🍇🍊</h1>
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-primary mb-3" @click="callApi">Show List </button>
-                        <button class="btn btn-danger mb-3" @click="deleteApi">Delete List </button>
-                    </div>
                     <ul class="list-group">
-                        <li class="list-group-item bg-dark text-white" v-for="item in apiData" :key="item.name">
-                            {{ item.name }} - {{ item.color }} - {{ item.taste }}
+                        <li class="list-group-item bg-dark text-white" v-for="(item, index) in apiData" :key="item.name">
+                            <div class="d-flex justify-content-between">
+                                <p>{{ item.name }} - {{ item.color }} - {{ item.taste }}</p>
+                                <button @click="deleteItem(item)" class="btn btn-danger fa-regular fa-trash-can fa-xs"></button>
+                            </div>
                         </li>
+                        <!-- input for add new task -->
+                        <input class="form-control mt-4" type="text" placeholder="Add new fruit" v-model="newTask.name">
+                        <input class="form-control mt-4" type="text" placeholder="Add color" v-model="newTask.color">
+                        <input class="form-control mt-4" type="text" placeholder="Add taste" v-model="newTask.taste">
+                        <!-- buttons for add new task and delete all tasks -->
+                        <button class="btn btn-success mt-4" @click="addNewTask">Add new 🍉</button>
+                        <button class="btn btn-danger mt-4" @click="deleteAllTasks">Delete all</button>
                     </ul>
                 </div>
             </div>
